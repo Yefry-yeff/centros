@@ -8,6 +8,7 @@ use App\Models\persona;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 use SweetAlert;
+use Auth;
 
 class CentroControler extends Controller
 {
@@ -29,7 +30,29 @@ class CentroControler extends Controller
      */
     public function create()
     {
-        $colonia = DB::SELECT('select * from colonia;');
+        // $colonia = DB::SELECT('select * from colonia;');
+        // return $colonia;
+
+        $idUser = Auth::user()->id;
+
+        $colonia = DB::SELECT('select
+
+        users.name As "Usuario",
+        users.id   As "idUsuario",
+        escuela.nombre As "Escuela",
+        escuela.id As "idEscuela",
+        colonia.nombre As "Colonia",
+        colonia.id As "idColonia"
+
+        FROM `users`
+
+    inner join escuela
+    on users.escuela_id = escuela.id
+    inner join colonia
+    ON escuela.colonia_id = colonia.id
+    WHERE users.id ='. $idUser);
+
+
         return $colonia;
 
        /*  $escuela = DB::SELECT('select * from escuela where') */

@@ -105,11 +105,19 @@
             })
             }
             function cargo(data){
-                 var html_select =' <option selected value="" disabled >Seleccione la Colonia </option>';
+                var html_select ='';
+                 /* var html_select ='<option value="'+data[i].idColonia+'" ">'+data[i].Colonia +'</option>'; */
+                 for (var i=0; i<data.length; ++i){
+                   html_select = '<option selected="selected" value="'+data[i].idColonia+'" ">'+data[i].Colonia +'</option>'
+                 }
+
+                 var html_selectEscuela ='';
                  for (var i=0; i<data.length; ++i)
-                   html_select += '<option value="'+data[i].id+'" ">'+data[i].nombre +'</option>'
+                   html_selectEscuela = '<option selected="selected" value="'+data[i].idEscuela+'"">'+data[i].Escuela +'</option>'
+                   $('#escuelas').html(html_selectEscuela)
 
                    $('#centros').html(html_select)
+
              }
 
 
@@ -118,34 +126,34 @@
                 escuela( idColonia);
             }
 
-            function escuela(idColonia) {
-                // console.log('datos: ', $("#idPic").serialize());
+            // function escuela(idColonia) {
+            //     // console.log('datos: ', $("#idPic").serialize());
 
 
-                $.ajax({
-                type:"GET",
-                url: "http://10.62.144.245:8000/colonias/escuelas/"+idColonia,
-                contentType: false,
-                cache: false,
-                processData:false,
-                dataType:"json",
-                success: function(data){
-                    console.log("escuela",data[0]);
-                    cargoEscuela(data);
+            //     $.ajax({
+            //     type:"GET",
+            //     url: "http://10.62.144.245:8000/colonias/escuelas/"+idColonia,
+            //     contentType: false,
+            //     cache: false,
+            //     processData:false,
+            //     dataType:"json",
+            //     success: function(data){
+            //         console.log("escuela",data[0]);
+            //         cargoEscuela(data);
 
 
 
 
 
-            //$('#img').attr('src', e.target.result);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    // CierraPopup(modalID);
-                    // toastr.error('Problemas con el envio. Vuelva a intentarlo por favor.');
-                    console.log(jqXHR, textStatus, errorThrown);
-                }
-            })
-            }
+            // //$('#img').attr('src', e.target.result);
+            //     },
+            //     error: function (jqXHR, textStatus, errorThrown) {
+            //         // CierraPopup(modalID);
+            //         // toastr.error('Problemas con el envio. Vuelva a intentarlo por favor.');
+            //         console.log(jqXHR, textStatus, errorThrown);
+            //     }
+            // })
+            // }
 
             function cargoEscuela(data){
                  var html_select =' <option selected value="" disabled >Seleccione la Escuela </option>';

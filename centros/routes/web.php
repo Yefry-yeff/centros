@@ -14,18 +14,20 @@ use App\Http\Controllers\CentroControler;
 |
 */
 
-Route::get('/', function () {
-    return view('centros.index');
-});
+// Route::get('/centro', function () {
+//     return view('centros.index');
+// });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
 
-
+     return view('centros.index');
 })->name('dashboard');
 
+
 Route::resource("/centro", "App\Http\Controllers\CentroControler");
-Route::get('/centro', 'SweetController@notification');
+
+//Route::get('/centro', 'SweetController@notification');
+
 Route::get('/colonias/escuelas/{idColonia}', [CentroControler::class, 'getEscuelas']);
 
 
