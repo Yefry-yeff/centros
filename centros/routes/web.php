@@ -26,8 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::resource("/centro", "App\Http\Controllers\CentroControler");
 
 //Route::get('/centro', 'SweetController@notification');
-
 Route::get('/colonias/escuelas/{idColonia}', [CentroControler::class, 'getEscuelas']);
-Route::get('/empleado', [EmpleadoController::class, 'getDeptos']);
+
 
 

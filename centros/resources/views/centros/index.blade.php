@@ -17,7 +17,7 @@
     </head>
 
     <body>
-       
+
     <div class="py-12">
             <!-- <div class="alert alert-danger" role="alert">
                 Este es un alerta
@@ -76,7 +76,7 @@
                 duration: 3000,
                 origin: 'left',
                 distance: '-100px',
-                delay: 300 
+                delay: 300
             });
 
             var  selector  = document.getElementById("numId");
@@ -88,8 +88,6 @@
 
             function estatus() {
                 // console.log('datos: ', $("#idPic").serialize());
-
-
                 $.ajax({
                 type:"GET",
                 url: " http://192.168.1.8:8000/centro/create",
@@ -100,9 +98,6 @@
                 success: function(data){
                     console.log(data);
                     cargo(data);
-
-
-
 
             //$('#img').attr('src', e.target.result);
                 },
@@ -124,9 +119,7 @@
                  for (var i=0; i<data.length; ++i)
                    html_selectEscuela = '<option selected="selected" value="'+data[i].idEscuela+'"">'+data[i].Escuela +'</option>'
                    $('#escuelas').html(html_selectEscuela)
-
                    $('#centros').html(html_select)
-
              }
 
 
@@ -171,7 +164,7 @@
                    $('#escuelas').html(html_select)
              }
 
-            
+
             function guardar() {
                 // console.log('datos: ', $("#idPic").serialize());
 
@@ -183,24 +176,27 @@
                 })
                 $.ajax({
                 type:"POST",
-                url: " http://192.168.1.8:8000/centro",
+                url: "http://192.168.1.8:8000/centro",
                 data: data,
                 contentType: false,
                 cache: false,
                 processData:false,
                 dataType:"json",
                 success: function(data){
-                    
+
                 console.log(data);
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(jqXHR, textStatus, errorThrown);
                 }
-                
+
             })
             $('#formu').trigger("reset");
             }
+
+
+            
             function validar(){
                 var canPersonas = document.getElementById('canPersonas');
                 var identidad = document.getElementById('numId');
@@ -211,7 +207,7 @@
                     text: 'Debes ingresar tu número de identidad'
                 })
                 }else if(canPersonas.value ==""){
-                        
+
                         Swal.fire({
                         icon: 'warning',
                         title: 'Uups...!',
@@ -221,10 +217,10 @@
                 }else{
                     (guardar)();
                 }
-                
+
             }
-            
-            
+
+
             </script>
 
 
